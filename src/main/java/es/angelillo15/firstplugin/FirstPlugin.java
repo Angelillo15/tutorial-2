@@ -1,17 +1,28 @@
 package es.angelillo15.firstplugin;
 
-import org.bukkit.Bukkit;
+import es.angelillo15.firstplugin.cmd.InfoCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class FirstPlugin extends JavaPlugin {
+    private static FirstPlugin instance;
     @Override
     public void onEnable() {
-        Bukkit.getConsoleSender().sendMessage("Hola mundo desde console sender");
-        getLogger().info("Hola mundo desde el logger");
+        instance = this;
+        registerCommands();
+        getLogger().info("Plugin iniciado!");
+        getLogger().info("Corriendo la version: " + getDescription().getVersion());
+    }
+
+    public void registerCommands() {
+        getCommand("info").setExecutor(new InfoCMD());
     }
 
     @Override
     public void onDisable() {
         getLogger().info("Adios gracias por usar mi plugin :)");
+    }
+
+    public static FirstPlugin getInstance() {
+        return instance;
     }
 }
