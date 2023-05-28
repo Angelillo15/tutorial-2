@@ -1,0 +1,4 @@
+name: "FirstPlugin"
+main: "es.angelillo15.firstplugin.FirstPlugin"
+author: "Angelillo15"
+version: "1.0.0"
